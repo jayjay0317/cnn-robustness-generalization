@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Downloaded datasets
+data/
+
+# Trained models and checkpoints
+models/
+*.pt
+*.pth
+*.ckpt
+
+# Experiment artifacts
+results/*.csv
+results/*.npy
+results/*.npz
+
+# OS / editor files
+.DS_Store
+Thumbs.db
