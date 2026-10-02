@@ -198,6 +198,7 @@ cnn-robustness-generalization/
 │   └── overall_robustness_summary.png
 ├── README.md
 ├── requirements.txt
+├── LICENSE
 └── .gitignore
 ```
 
@@ -227,3 +228,21 @@ Run the notebooks in the following order:
 The project requires Python with PyTorch, torchvision, NumPy, scikit-learn, Matplotlib, and Jupyter installed.
 
 The CIFAR-10 dataset and trained model checkpoints are stored locally and are not tracked by Git.
+
+## Requirements
+
+The project uses the following main Python packages:
+
+- PyTorch
+- torchvision
+- NumPy
+- pandas
+- Matplotlib
+- scikit-learn
+- Jupyter
+
+Install the required packages with:
+
+```bash
+pip install -r requirements.txt
+```
