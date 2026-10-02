@@ -1,6 +1,6 @@
 # CNN Robustness and Generalization under Image Corruption
 
-This project investigates whether standard geometric data augmentation improves the robustness of a convolutional neural network to image corruptions that were not explicitly seen during training.
+This project investigates whether standard geometric data augmentation improves the robustness of a convolutional neural network to unseen image corruptions that were not explicitly included during training.
 
 A baseline CNN and an augmented CNN are trained on CIFAR-10 using the same architecture and training configuration. The augmented model is trained with random cropping and horizontal flipping, while both models are evaluated under identical clean and corrupted test conditions.
 
@@ -143,3 +143,32 @@ Both models were relatively stable near the clean brightness condition. However,
 Random cropping and horizontal flipping maintained approximately the same clean test performance as the baseline training pipeline, but they did not improve robustness to the evaluated unseen corruptions.
 
 The augmented CNN performed worse than the baseline under every evaluated Gaussian noise and Gaussian blur condition and under most brightness shifts. These results suggest that invariance learned from standard geometric augmentation does not necessarily transfer to robustness against unrelated pixel-level or intensity-based distribution shifts.
+
+## Robustness Visualizations
+
+### Gaussian Noise
+
+![Gaussian Noise Robustness Comparison](results/gaussian_noise_comparison.png)
+
+The models begin with nearly identical clean performance, but the augmented CNN degrades more rapidly as Gaussian noise increases.
+
+
+### Gaussian Blur
+
+![Gaussian Blur Robustness Comparison](results/gaussian_blur_comparison.png)
+
+The performance gap is relatively small under weak blur and becomes more pronounced under moderate and strong blur.
+
+
+### Brightness Shifts
+
+![Brightness Robustness Comparison](results/brightness_comparison.png)
+
+Both models remain relatively stable around the original brightness level, while the augmented model shows greater performance degradation as images become darker.
+
+
+### Overall Comparison
+
+![Overall Robustness Summary](results/overall_robustness_summary.png)
+
+Across most evaluated corruption conditions, the augmented CNN achieved lower accuracy than the baseline despite maintaining comparable clean test performance.
