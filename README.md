@@ -180,3 +180,51 @@ This study uses a single CNN architecture, one dataset, and one training run for
 The augmentation strategy is also limited to random cropping and horizontal flipping, while robustness is evaluated using only Gaussian noise, Gaussian blur, and brightness shifts. The results therefore should not be interpreted as evidence that data augmentation generally reduces corruption robustness.
 
 Instead, the findings are specific to the model, augmentation strategy, dataset, and corruption settings evaluated in this project.
+
+## Repository Structure
+
+## Repository Structure
+
+```text
+cnn-robustness-generalization/
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_baseline_cnn_training.ipynb
+│   ├── 03_corruption_evaluation.ipynb
+│   ├── 04_augmentation_training.ipynb
+│   └── 05_robustness_comparison.ipynb
+├── results/
+│   ├── gaussian_noise_comparison.png
+│   ├── gaussian_blur_comparison.png
+│   ├── brightness_comparison.png
+│   └── overall_robustness_summary.png
+├── README.md
+└── .gitignore
+```
+
+The notebooks follow the experimental workflow from data exploration and baseline training through corruption evaluation, augmentation training, and the final robustness comparison.
+
+The `data/` and `models/` directories are excluded from version control. CIFAR-10 data and trained model checkpoints are stored locally and are not included in the repository.
+
+## How to Run
+
+Run the notebooks in the following order:
+
+1. `01_data_exploration.ipynb`  
+   Explore CIFAR-10 and compute image normalization statistics.
+
+2. `02_baseline_cnn_training.ipynb`  
+   Train the baseline CNN and save the checkpoint with the lowest validation loss.
+
+3. `03_corruption_evaluation.ipynb`  
+   Evaluate the baseline CNN under Gaussian noise, Gaussian blur, and brightness shifts.
+
+4. `04_augmentation_training.ipynb`  
+   Train the same CNN architecture using random cropping and horizontal flipping, and save the checkpoint with the lowest validation loss.
+
+5. `05_robustness_comparison.ipynb`  
+   Load the baseline and augmented checkpoints and compare both models under identical clean and corrupted test conditions.
+
+The project requires Python with PyTorch, torchvision, NumPy, scikit-learn, Matplotlib, and Jupyter installed.
+
+The CIFAR-10 dataset and trained model checkpoints are stored locally and are not tracked by Git.
