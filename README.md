@@ -183,8 +183,6 @@ Instead, the findings are specific to the model, augmentation strategy, dataset,
 
 ## Repository Structure
 
-## Repository Structure
-
 ```text
 cnn-robustness-generalization/
 ├── notebooks/
@@ -199,6 +197,7 @@ cnn-robustness-generalization/
 │   ├── brightness_comparison.png
 │   └── overall_robustness_summary.png
 ├── README.md
+├── requirements.txt
 └── .gitignore
 ```
 
