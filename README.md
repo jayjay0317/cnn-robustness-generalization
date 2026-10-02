@@ -172,3 +172,11 @@ Both models remain relatively stable around the original brightness level, while
 ![Overall Robustness Summary](results/overall_robustness_summary.png)
 
 Across most evaluated corruption conditions, the augmented CNN achieved lower accuracy than the baseline despite maintaining comparable clean test performance.
+
+## Limitations
+
+This study uses a single CNN architecture, one dataset, and one training run for each model. Because neural network training and random data augmentation are stochastic, repeated experiments across multiple random seeds would be needed to determine how stable the observed performance differences are.
+
+The augmentation strategy is also limited to random cropping and horizontal flipping, while robustness is evaluated using only Gaussian noise, Gaussian blur, and brightness shifts. The results therefore should not be interpreted as evidence that data augmentation generally reduces corruption robustness.
+
+Instead, the findings are specific to the model, augmentation strategy, dataset, and corruption settings evaluated in this project.
