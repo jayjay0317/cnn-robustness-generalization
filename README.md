@@ -87,3 +87,59 @@ Robustness was evaluated on the CIFAR-10 test set under three types of synthetic
 | Brightness shift | Factors `0.4`, `0.6`, `0.8`, `1.0`, `1.2`, `1.4` |
 
 For each corruption condition, the baseline and augmented CNNs were evaluated on the same transformed test images. Clean test performance was also measured to provide a reference for robustness degradation.
+
+## Results
+
+### Clean Performance
+
+The two models achieved nearly identical performance on the clean CIFAR-10 test set.
+
+| Model | Test Loss | Test Accuracy |
+|---|---:|---:|
+| Baseline CNN | `0.8143` | `71.52%` |
+| Augmented CNN | `0.8085` | `71.87%` |
+
+The augmented CNN improved clean test accuracy by only `0.35` percentage points, indicating that random cropping and horizontal flipping largely preserved clean classification performance.
+
+
+### Gaussian Noise
+
+| Noise Std | Baseline Accuracy | Augmented Accuracy | Difference |
+|---:|---:|---:|---:|
+| `0.05` | `67.35%` | `61.24%` | `-6.11 pp` |
+| `0.10` | `53.98%` | `43.37%` | `-10.61 pp` |
+| `0.20` | `29.98%` | `26.74%` | `-3.24 pp` |
+
+The augmented CNN achieved lower accuracy at all three Gaussian noise levels. The largest gap occurred at `std=0.10`, where the augmented model underperformed the baseline by `10.61` percentage points.
+
+
+### Gaussian Blur
+
+| Severity | Baseline Accuracy | Augmented Accuracy | Difference |
+|---|---:|---:|---:|
+| Weak | `69.04%` | `67.65%` | `-1.39 pp` |
+| Moderate | `57.16%` | `50.44%` | `-6.72 pp` |
+| Strong | `40.60%` | `35.38%` | `-5.22 pp` |
+
+The performance difference was small under weak blur but became more pronounced at moderate and strong blur levels.
+
+
+### Brightness Shifts
+
+| Brightness Factor | Baseline Accuracy | Augmented Accuracy | Difference |
+|---:|---:|---:|---:|
+| `0.4` | `44.73%` | `42.79%` | `-1.94 pp` |
+| `0.6` | `64.93%` | `60.43%` | `-4.50 pp` |
+| `0.8` | `70.95%` | `69.06%` | `-1.89 pp` |
+| `1.0` | `71.52%` | `71.87%` | `+0.35 pp` |
+| `1.2` | `70.78%` | `70.95%` | `+0.17 pp` |
+| `1.4` | `69.02%` | `68.42%` | `-0.60 pp` |
+
+Both models were relatively stable near the clean brightness condition. However, the augmented model showed lower accuracy under darker conditions, particularly at a brightness factor of `0.6`.
+
+
+## Key Findings
+
+Random cropping and horizontal flipping maintained approximately the same clean test performance as the baseline training pipeline, but they did not improve robustness to the evaluated unseen corruptions.
+
+The augmented CNN performed worse than the baseline under every evaluated Gaussian noise and Gaussian blur condition and under most brightness shifts. These results suggest that invariance learned from standard geometric augmentation does not necessarily transfer to robustness against unrelated pixel-level or intensity-based distribution shifts.
