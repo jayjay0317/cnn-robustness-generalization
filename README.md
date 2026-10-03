@@ -2,7 +2,7 @@
 
 This project investigates whether standard geometric data augmentation improves the robustness of a convolutional neural network to unseen image corruptions that were not explicitly included during training.
 
-A baseline CNN and an augmented CNN are trained on CIFAR-10 using the same architecture and training configuration. The augmented model is trained with random cropping and horizontal flipping, while both models are evaluated under identical clean and corrupted test conditions.
+A baseline CNN and an augmented CNN are trained on CIFAR-10 using the same architecture and optimization settings. The augmented model is trained with random cropping and horizontal flipping, while both models are evaluated under identical clean and corrupted test conditions.
 
 The robustness analysis focuses on three corruption types:
 
@@ -34,7 +34,7 @@ Images were normalized using channel statistics computed from the original 50,00
 
 ## Model Architecture
 
-Both experiments use the same convolutional neural network architecture so that differences in robustness can be attributed to the training augmentation rather than changes in model capacity.
+Both experiments use the same convolutional neural network architecture to isolate the effect of training augmentation from changes in model capacity.
 
 The network consists of two convolutional blocks followed by a fully connected classifier:
 
@@ -89,6 +89,8 @@ Robustness was evaluated on the CIFAR-10 test set under three types of synthetic
 For each corruption condition, the baseline and augmented CNNs were evaluated on the same transformed test images. Clean test performance was also measured to provide a reference for robustness degradation.
 
 ## Results
+
+In the corruption tables below, `Difference` represents augmented accuracy minus baseline accuracy.
 
 ### Clean Performance
 
@@ -224,8 +226,6 @@ Run the notebooks in the following order:
 
 5. `05_robustness_comparison.ipynb`  
    Load the baseline and augmented checkpoints and compare both models under identical clean and corrupted test conditions.
-
-The project requires Python with PyTorch, torchvision, NumPy, scikit-learn, Matplotlib, and Jupyter installed.
 
 The CIFAR-10 dataset and trained model checkpoints are stored locally and are not tracked by Git.
 
