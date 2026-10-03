@@ -246,3 +246,12 @@ Install the required packages with:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Future Work
+
+Future work could extend the current experiments in several directions:
+
+- Repeat training across multiple random seeds to evaluate the stability of the observed robustness differences.
+- Investigate corruption-aware augmentation strategies that explicitly include noise, blur, or brightness variation during training.
+- Compare the results with stronger CNN architectures such as ResNet.
+- Evaluate robustness on additional datasets and a broader range of image corruptions.
